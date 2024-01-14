@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service PeerService {
+  rpc RequestPeerAdd(RequestPeerAddRequest) returns (RequestPeerAddResponse);
+}
+
+message RequestPeerAddRequest {
+	int32 NodeId = 1;
+	string Address = 2;
+}
+
+message RequestPeerAddResponse {
+	bool Added = 1;
+}

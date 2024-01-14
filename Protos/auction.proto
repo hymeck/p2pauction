@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+service AuctionService {
+  rpc InitiateAuction (InitiateAuctionRequest) returns (InitiateAuctionResponse);
+  rpc PlaceBid (PlaceBidRequest) returns (PlaceBidResponse);
+  rpc FinalizeAuction(FinalizeAuctionRequest) returns (FinalizeAuctionResponse);
+}
+
+message InitiateAuctionRequest {
+  string AuctionId = 1;
+  string Item = 2;
+  double InitialPrice = 3;
+  int32 InitiatorNodeId = 4;
+}
+
+message InitiateAuctionResponse {
+	bool Succeed = 1;
+}
+
+message PlaceBidRequest {
+	string AuctionId = 1;
+	int32 BidderNodeId = 2;
+	double Amount = 3;
+}
+
+message PlaceBidResponse {
+	bool Succeed = 1;
+}
+
+message FinalizeAuctionRequest {
+	string AuctionId = 1;
+}
+
+message FinalizeAuctionResponse {
+	int32 CloserNodeId = 1;
+	double TotalAmount = 2;
+}
